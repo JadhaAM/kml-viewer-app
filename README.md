@@ -18,8 +18,8 @@ Ensure you have **Node.js** and **npm** installed.
 
 ### Clone Repository
 ```bash
-git clone https://github.com/your-repo/kml-file-viewer.git
-cd kml-file-viewer
+git clone https://github.com/JadhaAM/kml-viewer-app.git
+cd kml-viewer-app
 ```
 
 ### Install Dependencies
@@ -83,6 +83,5 @@ Save this as `test-data.kml` and upload it to test the functionality.
 ## License
 This project is **open-source** and available under the [MIT License](LICENSE).
 
----
-**Happy Coding! 🚀**
+
 
