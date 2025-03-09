@@ -5,7 +5,6 @@ import { DOMParser } from 'xmldom';
 import toGeoJSON from '@mapbox/togeojson';
 import './KMLViewer.css';
 
-// Fix for Leaflet icon issue in React
 import L from 'leaflet';
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -38,19 +37,16 @@ const KMLViewer = () => {
         const parser = new DOMParser();
         const kmlDoc = parser.parseFromString(kmlContent, 'text/xml');
         
-        // Check if it's a valid KML file
         const kmlElement = kmlDoc.getElementsByTagName('kml')[0];
         if (!kmlElement) {
           throw new Error('Invalid KML file');
         }
         
         setKmlData(kmlDoc);
-        
-        // Convert KML to GeoJSON
+
         const geoJSONData = toGeoJSON.kml(kmlDoc);
         setGeoJSON(geoJSONData);
-        
-        // Process the data for summaries
+      
         processKMLData(geoJSONData);
       } catch (err) {
         setError('Error processing KML file: ' + err.message);
@@ -89,8 +85,7 @@ const KMLViewer = () => {
   };
   
   const calculateDistance = (point1, point2) => {
-    // Haversine formula for calculating distance between two points on Earth
-    const R = 6371; // Radius of Earth in km
+    const R = 6371;
     const dLat = (point2[1] - point1[1]) * Math.PI / 180;
     const dLon = (point2[0] - point1[0]) * Math.PI / 180;
     const a = 
@@ -104,7 +99,6 @@ const KMLViewer = () => {
   const processKMLData = (geoData) => {
     if (!geoData || !geoData.features) return;
     
-    // Count different element types
     const counts = {};
     const details = [];
     
@@ -112,7 +106,6 @@ const KMLViewer = () => {
       const type = feature.geometry.type;
       counts[type] = (counts[type] || 0) + 1;
       
-      // Calculate length for line elements
       let length = 0;
       if (type === 'LineString' || type === 'MultiLineString') {
         length = calculateLength(feature);
