@@ -10,7 +10,7 @@ This project is a simple **React-based webpage** that allows users to **upload a
 ✅ **Upload KML File** – Allows users to upload a `.kml` file.  
 ✅ **Summary View** – Displays the count of different KML element types.  
 ✅ **Detailed View** – Shows element type and total length (for LineStrings/MultiLineStrings).  
-✅ **Map Integration** – Renders KML elements on an interactive map using **OpenStreetMap / Google Maps / Leaflet.js**.  
+✅ **Map Integration** – Renders KML elements on an interactive map using ** Leaflet.js**.  
 
 ## Installation & Setup
 ### Prerequisites
